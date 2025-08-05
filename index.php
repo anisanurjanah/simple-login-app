@@ -21,6 +21,15 @@ if (!isset($_SESSION['user_id'])) {
 <body>
 
     <h2>Welcome!</h2>
+
+    <p>
+        Welcome to this simple login application!
+        This application was created as part of a basic learning project on PHP and MySQL.
+        Here, you can explore concepts such as sessions, user authentication,
+        and dynamic page management using the PHP programming language.
+        It's perfect for beginners who are just starting their journey into the world of web development.
+    </p>
+
     <a href="logout.php">Logout</a>
     
 </body>

@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: index.php");
         exit;
     } else {
-        echo "Invalid email or password.";
+        echo "Invalid email or password! Please try again.";
     }
 
 }
@@ -41,11 +41,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <form action="" method="post">
         <div>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" 
+                value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
         </div>
         <div>
             <label for="password">Password</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" required>
         </div>
 
         <button type="submit">Login</button>
