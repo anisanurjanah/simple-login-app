@@ -1,3 +1,30 @@
+<?php
+
+session_start();
+include 'database.php';
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+    $result = $connect->query($query);
+
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+
+        $_SESSION['user_id'] = $user['id'];
+        header("Location: index.php");
+        exit;
+    } else {
+        echo "Invalid email or password.";
+    }
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,11 +41,11 @@
     <form action="" method="post">
         <div>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email">
         </div>
         <div>
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password">
         </div>
 
         <button type="submit">Login</button>
